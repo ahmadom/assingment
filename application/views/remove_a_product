@@ -1,0 +1,83 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+$this->load->helper('url');
+
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>style.css">	<meta charset="utf-8">
+	<title>Students</title>
+
+	<script type="text/javascript">
+	   <!--
+	      // Form validation code will come here.
+	      function validateForm()
+	      {
+
+	         if( document.forms["removebook"]["booktitle"].value == "" )
+	         {
+	            alert( "Please provide book title!" );
+	            return false;
+	         }
+
+	         if( document.forms["removebook"]["genre"].value == "" )
+	         {
+	            alert( "Please provide isbn!" );
+	            return false;
+	         }
+					 if( document.forms["removebook"]["isbn"].value < 0 )numberofpages
+	         {
+	            alert( "Please provide isbn greater than 0!" );
+	            return false;
+	         }
+           if( document.forms["removebook"]["numberofpage"].value  < 0 )
+          {
+             alert( "Please provide numberofpage greater than 0!" );
+             return false;
+          }
+          if( document.forms["removebook"]["publisheddate"].value < 0 )numberofpages
+          {
+             alert( "Please provide publisheddate greater than 0!" );
+             return false;
+          }
+          if( document.forms["removebook"]["bookid"].value < 0 )numberofpages
+          {
+             alert( "Please provide bookid greater than 0!" );
+             return false;
+
+
+	   //-->
+	</script>
+</head>
+<body>
+	<div><h1>Add Student</h1></div>
+	<?php
+	if(isset($result))
+	{
+		echo " student added successfully";
+	}
+	else {
+		echo '<form name="addstudent" action="'. base_url().'index.php/academy/add_student" onsubmit="return validateForm()" method="post">
+	   Student Name: <input type="text" name="studentName"><br>
+		 Student Age: <input type="text" name="studentAge"><br>
+		 Major: <select name="studentMajor">';
+		 if(isset($majorList))
+		 {
+			 foreach ($majorList as $major)
+			 {
+				 echo '<option value="'.$major->MajorID.'">'.$major->MajorName.'</option>';
+			 }
+		 }
+		 echo '</select>
+		    <input type="submit" value="Submit">
+		  </form>';
+	}
+	?>
+
+
+
+
+
+
+</body>
+</html>
